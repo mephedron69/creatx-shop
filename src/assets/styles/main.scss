@@ -1,3 +1,5 @@
+@import "variables";
+
 .container {
     width: 1266px;
     margin: 0 auto;
@@ -17,4 +19,26 @@
     @media screen and (max-width: $mobileSmall) {
         width: 540px;
     }
+}
+
+ .swiper-wrapper {
+     display: flex;
+     gap: 145px;
+ }
+
+ .swiper-pagination-bullet {
+            width: 30px !important;
+            border-radius: 5px !important;
+            height: 3px !important;
+            -webkit-border-radius: 5px !important;
+            -moz-border-radius: 5px !important;
+            -ms-border-radius: 5px !important;
+            -o-border-radius: 5px !important;
+}
+.swiper-pagination {
+    bottom: 176px !important;
+}
+
+.swiper {
+    width: 1520px !important;
 }

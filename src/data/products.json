@@ -1,0 +1,76 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Shirt with insertion lace trims",
+            "price": 49.95,
+            "image": "product1"
+        },
+        {
+            "id": 2,
+            "name": "Mid-rise slim cropped fit jeans",
+            "price": 40.00,
+            "image": "product2"
+        },
+        {
+            "id": 3,
+            "name": "Black and white sport cap",
+            "price": 18.85,
+            "image": "product3"
+        },
+        {
+            "id": 4,
+            "name": "Green baby romper",
+            "price": 20.40,
+            "image": "product4"
+        },
+        {
+            "id": 5,
+            "name": "Check coat with colour contrast",
+            "price": 183.43,
+            "image": "product5"
+        },
+        {
+            "id": 6,
+            "name": "Red dangle earrings",
+            "price": 29.95,
+            "image": "product6"
+        },
+        {
+            "id": 7,
+            "name": "Chrono watch with blue...",
+            "price": 120.60,
+            "image": "product7"
+        },
+        {
+            "id": 8,
+            "name": "Baby shoes with laces",
+            "price": 30.60,
+            "image": "product8"
+        },
+        {
+            "id": 9,
+            "name": "Basic hooded sweatshirt in pink",
+            "price": 15.50,
+            "image": "product9"
+        },
+        {
+            "id": 10,
+            "name": "Skinny push-up jeans",
+            "price": 40.00,
+            "image": "product10"
+        },
+        {
+            "id": 11,
+            "name": "Leather crossbody bag with...",
+            "price": 89.50,
+            "image": "product11"
+        },
+        {
+            "id": 12,
+            "name": "Men fashion gray shoes",
+            "price": 85.50,
+            "image": "product12"
+        }
+    ]
+}
