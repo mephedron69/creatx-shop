@@ -1,0 +1,104 @@
+{
+    "category": [
+        {
+            "id": 1,
+            "category": "women",
+            "clothes": [
+                "Coats",
+                "Jackets",
+                "Suits",
+                "Dresses",
+                "Cardigans & sweaters",
+                "Sweatshirts & hoodies",
+                "T-shirts & tops",
+                "Pants",
+                "Jeans",
+                "Shorts",
+                "Skirts",
+                "Lingerie & nightwear",
+                "Sportswear",
+                "Swimwear"
+            ],
+            "shoes": [
+                "Boots",
+                 "Flat shoes",
+                 "Heels",
+                 "Sandals",
+                 "Mules",
+                 "Sliders",
+                 "Slippers",
+                 "Sneakers",
+                 "Leather"
+            ],
+            "accessories": [
+                "Bags & bagpacks",
+                "Hats & scarves",
+                "Hair accessories",
+                "Belts",
+                "Jewellery",
+                "Watches",
+                "Watches",
+                "Purses",
+                "Gloves",
+                "Socks & tights"
+            ],
+            "sizes": [
+                "XS",
+                "S",
+                "M",
+                "L",
+                "XL",
+                "Plus Size"
+                
+            ]
+        },
+        {
+            "id": 2,
+            "category": "man",
+            "clothes": [
+                "Coats",
+                "Jackets",
+                "Suits"
+            ],
+            "shoes": [
+                "Boots",
+                "Flat shoes"
+            ],
+            "accessories": [
+                "Bags & bagpacks"
+            ]
+        },
+        {
+            "id": 3,
+            "category": "boy",
+            "clothes": [
+                "Coats",
+                "Jackets",
+                "Suits"
+            ],
+            "shoes": [
+                "Boots",
+                "Flat shoes"
+            ],
+            "accessories": [
+                "Bags & bagpacks"
+            ]
+        },
+        {
+            "id": 4,
+            "category": "girl",
+            "clothes": [
+                "Coats",
+                "Jackets",
+                "Suits"
+            ],
+            "shoes": [
+                "Boots",
+                "Flat shoes"
+            ],
+            "accessories": [
+                "Bags & bagpacks"
+            ]
+        }
+    ]
+}

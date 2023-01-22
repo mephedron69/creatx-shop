@@ -5,9 +5,9 @@
             <p>Available 24/7 at (405) 555-0128</p>
             <div class="header__top__p2">
                 <p>Delivery & returns</p>
-                <p>Track order</p>
-                <p>Blog</p>
-                <p>Contacts</p>
+                <router-link to="/track"><p>Track order</p></router-link>
+                <router-link to="/blog"><p>Blog</p></router-link>
+                <router-link to="/contact"><p>Contacts</p></router-link>
             </div>
             <div class="header__top__p3">
                 <div class="header__top__p3__currence">
@@ -19,7 +19,11 @@
                 </div>
                 <div class="header__top__p3__profil">
                     <img src="@/assets/icons/profilicon.png"/>
-                    <p>Log in / Register</p>
+                    <p @click="signIn = true" style="cursor: pointer;">Log in</p>
+                    <sign-in @click="signIn=false" @closeModal="closeModel" class="signin" v-if="signIn"/>
+                    /
+                    <p @click="signUp = true" style="cursor: pointer;"> Register</p>
+                    <sign-up @click="signUp=false" @closeModal1="closeModel1" class="signup" v-if="signUp"/>
                 </div>
             </div>
         </div>
@@ -28,8 +32,9 @@
             <div class="header__middle__left">
                 <router-link to="/"><img src="@/assets/icons/logoshop.png"/></router-link>
                 <div class="header__middle__left-sort">
-                    <p>Women</p>
-                    <p>Men</p>
+                    <p @click="categoryNav = !categoryNav">Women</p>
+                    <category-nav class="navigation" v-if="categoryNav"/>
+                    <router-link to="/category"><p>Men</p></router-link>
                     <p>Girls</p>
                     <p>Boys</p>
                     <p style="color: red">Sale</p>
@@ -43,11 +48,11 @@
 
                 <div class="header__middle__right__p2">
                     <div class="favbas">
-                         <img src="@/assets/icons/favouricon.png"/>
+                         <router-link to="/account"><img src="@/assets/icons/favouricon.png"/></router-link>
                         <p>2</p>
                     </div>
                     <div class="favbas">
-                         <img src="@/assets/icons/basketicon.png"/>
+                         <router-link to="/checkout"><img src="@/assets/icons/basketicon.png"/></router-link>
                         <p class="favbas-style">4</p>
                     </div>
                 </div>
@@ -64,11 +69,67 @@
     </div>
 </template>
 <script>
+import CategoryNav from '../UI/CategoryNav.vue';
+import SignIn from '../UI/SignIn.vue';
+import SignUp from '../UI/SignUp.vue';
+
 export default {
-    
+    components: { SignIn, SignUp, CategoryNav},
+    data() {
+        return {
+            signIn: false,
+            signUp: false,
+            categoryNav: false
+        }
+    },
+    methods: {
+        closeModel(value) {
+            console.log(value);
+            this.signIn = value;
+        },
+        closeModel1(value) {
+            console.log(value);
+            this.signUp = value;
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
+.navigation {
+      z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4); /*Черный с непрозрачностью */
+    width: 100%; 
+    overflow: -moz-hidden-unscrollable;
+    margin-top: 120px;
+}
+
+.signin{
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4); /*Черный с непрозрачностью */
+    width: 100%; 
+    height: 100%; 
+    display: flex;
+    justify-content: center ;
+}
+
+.signup{
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4); /*Черный с непрозрачностью */
+    width: 100%; 
+    height: 100%; 
+    display: flex;
+    justify-content: center ;
+}
+
 .header {
     
     .topback{
@@ -87,6 +148,10 @@ export default {
         &__p2 {
             display: flex;
             gap: 32px;
+            a {
+                text-decoration: none;
+                color: white;
+            }
         }
          &__p3 {
             display: flex;
@@ -100,6 +165,7 @@ export default {
                     border: none;
                     background: #1E212C;
                     color: white;
+                    outline: none;
                 }
             }
             &__profil {
@@ -123,6 +189,10 @@ export default {
                 gap: 40px;
                 font-weight: 700;
                 font-size: 16px;
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
             }
         }
         &__right {
@@ -169,4 +239,5 @@ export default {
         text-decoration: underline;
     }
 }
+
 </style>

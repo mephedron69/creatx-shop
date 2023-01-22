@@ -1,0 +1,36 @@
+{
+    "blog": [
+        {
+            "id": 1,
+            "name": "Bag Trends for Summer 2023",
+            "image": "blog1",
+            "category": "fashion",
+            "date": "August 24, 2020",
+            "desc": "Vulputate vitae pellentesque scelerisque luctus consequat mattis pellentesque dui odio. Interdum aenean sit viverra amet,malesuada ornare sed gravida rhoncus, congue. Purus auctor nullam diam quis est hendrerit ac euismod..."
+        },
+        {
+            "id": 2,
+            "name": "Top 10 of This Season’s Hottest Sneakers",
+            "image": "blog2",
+            "category": "Lifestyle",
+            "date": "July 16, 2023",
+            "desc": "Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus quisque massa ut enim. Turpis viverra mattis semper pellentesque facilisis. Ut id eget sagittis lectus..."
+        },
+        {
+            "id": 3,
+            "name": "Wardrobe Essentials Everyone Should Own Today",
+            "image": "blog3",
+            "category": "Celebrity style",
+            "date": "August 5, 2020",
+            "desc": "Mauris tincidunt sollicitudin tristique odio eget volutpat. Fringilla viverra amet, mi interdum blandit. Tellus sed morbi massa quis sed. Faucibus tincidunt magna enim ultricies fringilla at rhoncus, hac..."
+        },
+        {
+            "id": 4,
+            "name": "Modern Accessories 2020: Why Simple Isn't Easy",
+            "image": "blog4",
+            "category": "fashion",
+            "date": "July 2, 2023",
+            "desc": "Tellus sed morbi massa quis sed. Faucibus tincidunt magna enim ultricies fringilla at rhoncus, hac. Sollicitudin et nec congue magna quis commodo quis luctus risus. Dolor, dignissim semper faucibus quisque massa ut enim..."
+        }
+    ]
+}

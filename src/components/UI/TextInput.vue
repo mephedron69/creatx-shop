@@ -1,0 +1,13 @@
+<template>
+    <div class="input">
+        dfdfdf
+    </div>
+</template>
+<script>
+export default {
+    
+}
+</script>
+<style lang="scss" scoped>
+    
+</style>

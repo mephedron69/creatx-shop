@@ -21,11 +21,6 @@
     }
 }
 
- .swiper-wrapper {
-     display: flex;
-     gap: 145px;
- }
-
  .swiper-pagination-bullet {
             width: 30px !important;
             border-radius: 5px !important;
@@ -40,5 +35,6 @@
 }
 
 .swiper {
-    width: 1520px !important;
+    width: 100vw ;
+    margin-left: 0;
 }

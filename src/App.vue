@@ -29,6 +29,7 @@ export default {
 }
 
   html,body,p {
+    overflow-x: hidden;
     margin: 0 ;
     padding: 0 ;
   }
