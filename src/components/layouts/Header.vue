@@ -52,7 +52,8 @@
                         <p>2</p>
                     </div>
                     <div class="favbas">
-                         <router-link to="/checkout"><img src="@/assets/icons/basketicon.png"/></router-link>
+                        <img src="@/assets/icons/basketicon.png" @click="openCheckout = !openCheckout" />
+                        <checkout-window v-if="openCheckout" class="checkout-modal"/>
                         <p class="favbas-style">4</p>
                     </div>
                 </div>
@@ -72,14 +73,16 @@
 import CategoryNav from '../UI/CategoryNav.vue';
 import SignIn from '../UI/SignIn.vue';
 import SignUp from '../UI/SignUp.vue';
+import CheckoutWindow from '../UI/CheckoutWindow.vue';
 
 export default {
-    components: { SignIn, SignUp, CategoryNav},
+    components: { SignIn, SignUp, CategoryNav, CheckoutWindow},
     data() {
         return {
             signIn: false,
             signUp: false,
-            categoryNav: false
+            categoryNav: false,
+            openCheckout: false
         }
     },
     methods: {
@@ -95,6 +98,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.checkout-modal {
+    z-index: 4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4); /*Черный с непрозрачностью */
+    width: 100%; 
+    height: 100%; 
+}
 .navigation {
       z-index: 3;
     position: fixed;
@@ -102,12 +114,13 @@ export default {
     left: 0;
     background-color: rgba(0,0,0,0.4); /*Черный с непрозрачностью */
     width: 100%; 
-    overflow: -moz-hidden-unscrollable;
+    height: 100%; 
+    max-width: 100%;
     margin-top: 120px;
 }
 
 .signin{
-    z-index: 3;
+    z-index: 5;
     position: fixed;
     top: 0;
     left: 0;
@@ -119,7 +132,7 @@ export default {
 }
 
 .signup{
-    z-index: 3;
+    z-index: 4;
     position: fixed;
     top: 0;
     left: 0;

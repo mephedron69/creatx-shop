@@ -16,7 +16,7 @@
         <div class="category__content container">
             <div class="category__content__top">
                 <div class="topleft">
-                        <div class="category__content__top__filter">
+                    <div class="category__content__top__filter" @click="openAllFilter = !openAllFilter">
                         <img src="@/assets/icons/filtericon.png" />
                         <p>Show filters</p>
                     </div>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="category__content__mid">
-                <div class="category__content__mid__filter">
+                <div class="category__content__mid__filter" v-if="openAllFilter">
                     <div>
                         <div class="basic">
                             <p>Clothes</p>
@@ -79,12 +79,12 @@
                             <img @click="openFilter3 =!openFilter3" src="@/assets/icons/plusicon.png"/>
                         </div>
                         <div class="color" v-if="openFilter3">
-                             <div class="color__box">
+                             <div class="color__box" v-for="(item, index) in colors" :key="index">
                                 <div class="color__box__input">
                                     <div class="color__box__input__out"></div>
-                                    <div class="color__box__input__in"></div>
+                                    <div class="color__box__input__in" :style="'background:' + item.color"></div>
                                 </div>
-                                <p>Black</p>
+                                <p>{{item.color}}</p>
                             </div>
                         </div>
                     </div>
@@ -130,22 +130,32 @@
                     <div>
                         <div class="basic">
                             <p>Price</p>
-                            <img src="@/assets/icons/plusicon.png"/>
+                            <img @click="openFilter6 = !openFilter6" src="@/assets/icons/plusicon.png"/>
                         </div>
-                        <div>
-                             <div>
-
-                            </div>
+                        <div class="category__content__mid__filter__price" v-if="openFilter6">
                             <div>
-
+                                <VueSimpleRangeSlider
+                                style="width: 300px"
+                                :min="0"
+                                :max="400"
+                                exponential
+                                v-model="state.range"
+                                >
+                                <template #prefix="{ value }">$</template>
+                                </VueSimpleRangeSlider>
+                                
+                            </div>
+                            <div class="category__content__mid__filter__price__maxmin">
+                                <input type="number" v-model="state.range[0]"/>
+                                <div class="category__content__mid__filter__price__maxmin-line"></div>
+                                <input type="number" v-model="state.range[1]"/>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="category__content__mid-cards"><card-button v-for="(item, index) in products" :product="item" :key="index"/></div>
-            </div>
-
-            <div class="category__content__bot">
+                <div class="category__content__mid-cards">
+                    <div class="category__content__mid-cards"><card-button v-for="(item, index) in products" :product="item" :key="index"/></div>
+                    <div class="category__content__bot">
                  <div class="topleft">
                     <div class="category__content__top__sort">
                         <p>Sort by</p>
@@ -165,6 +175,8 @@
                     <img src="@/assets/icons/linestrokblack.png"/>
                 </div>
             </div>
+                </div>
+            </div>
         </div>
         <notice-block />
     </div>
@@ -174,28 +186,47 @@ import NoticeBlock from '@/components/UI/NoticeBlock.vue';
 import CardButton from '@/components/UI/CardButton.vue';
 import products from "@/data/products.json"
 import category from "@/data/category.json"
+import colors from "@/data/colors.json"
+import Slider from '@vueform/slider'
+
+import VueSimpleRangeSlider from "vue-simple-range-slider";
+import "vue-simple-range-slider/css";
+import { reactive, defineComponent } from "vue";
+
 
 export default {
     data() {
         return {
             products: products.products,
             category: category.category,
-            openFilter: false,
+            colors: colors.colors,
+            openAllFilter: false,
+            openFilter: true,
             openFilter1: false,
             openFilter2: false,
             openFilter3: false,
             openFilter4: false,
-            openFilter5: false
+            openFilter5: false,
+            openFilter6: true,
+            value: [20, 40]
         }
     },
-    components: { NoticeBlock, CardButton },
+    components: { NoticeBlock, CardButton, Slider, VueSimpleRangeSlider },
     methods: {
-    }
+    },
+     setup() {
+    const state = reactive({ range: [45, 150], number: 10 });
+    return { state };
+    },
 }
 </script>
 <style lang="scss" scoped>
 .color {
     margin-top: 16px;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
     &__box {
         display: flex;
         flex-direction: column;
@@ -217,10 +248,9 @@ export default {
             position: absolute;
             width: 24px;
             height: 24px;
-            background: black;
             border-radius: 50%;
-                bottom: 4px;
-                left: 4.5px;
+                    bottom: 12%;
+                    left: 13%;
         }
         }
     }
@@ -314,12 +344,31 @@ export default {
         &__mid {
             display: flex;
             gap: 60px;
-            width: 100%;
             &__filter {
             display: flex;
             flex-direction: column;
             gap: 20px;
-            width: 26.82%;
+            width: 339.47px;
+
+            &__price {
+                &__maxmin {
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    input {
+                        width: 50%;
+                        padding: 9px 12px;background: #FFFFFF;
+                        border: 1px solid #D7DADD;
+                        border-radius: 4px;
+                    }
+                    &-line {
+                        width: 9px;
+                        border: 1px solid black;
+                    }
+                }
+            }
+
             &-line {
                 border: 1px solid #E5E8ED;
                 width: 100%;
@@ -332,6 +381,7 @@ export default {
                 align-items: center;
                 img {
                     width: 15px;
+                    cursor: pointer;
                 }
             }
             &__block {
@@ -380,6 +430,7 @@ export default {
             display: flex;
             justify-content: space-between;
             margin: 90px 0 180px 0;
+            width: 100%;
         }
     }
 }

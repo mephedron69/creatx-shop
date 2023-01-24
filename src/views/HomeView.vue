@@ -1,8 +1,15 @@
 <template>
     <div class="home">
         <div class="home__block1">
-            <swiper :pagination="pagination" :modules="modules" class="mySwiper1">
-            <swiper-slide>
+            <swiper 
+            :pagination="pagination" 
+            :navigation="{
+                nextEl: nextHome,
+                prevEl: prevHome
+            }" 
+            :modules="modules"
+             class="mySwiper1">
+            <swiper-slide class="homeimage">
               <div class="homeblock">
                   <p class="home__block1-p1">NEW COLLECTION</p>
                   <p class="home__block1-p2">Menswear 2023</p>
@@ -12,10 +19,12 @@
                   </div>
               </div>
             <img  class="chapka-img" src="@/assets/icons/chapka.png"/>
-          </swiper-slide>
-            <swiper-slide><img class="chapka-img" src="@/assets/images/chapka.png"/></swiper-slide>
-            <swiper-slide><img class="chapka-img" src="@/assets/images/chapka3.png"/></swiper-slide>
-            <swiper-slide><img  class="chapka-img" src="@/assets/images/chapka3.jpg"/></swiper-slide>
+            </swiper-slide>
+            <swiper-slide class="homeimage"><img class="chapka-img" src="@/assets/images/chapka.png"/></swiper-slide>
+            <swiper-slide class="homeimage"><img class="chapka-img" src="@/assets/images/chapka3.png"/></swiper-slide>
+            <swiper-slide class="homeimage"><img  class="chapka-img" src="@/assets/images/chapka3.jpg"/></swiper-slide>
+              <div ref="prevHome" class="next-arrow111"><img src="@/assets/icons/leftstrok.png"/></div>
+              <div ref="nextHome" class="prev-arrow111"><img src="@/assets/icons/rightstrok.png"/></div>
           </swiper>
         </div>
         <div class="home__block2">
@@ -146,10 +155,10 @@
             </div>
         </div>
         <div class="home__block6">
-            <div class="block6"><advert-card text="Trending now" button="Explore top sales"/></div>
+            <div class="block6"><advert-card text="Trending now" button="Explore top sales" numbers="block" width="100%" slidesPerView="3"/></div>
         </div>
         <div class="home__block7">
-            <div class="block7"><advert-card text="Sale up to 70%" button="See all sale products"/></div>
+            <div class="block7"><advert-card text="Sale up to 70%" button="See all sale products" numbers="block" width="100%" slidesPerView="3"/></div>
         </div>
        <div class="backblock8">
          <div class="home__block8 container">
@@ -248,11 +257,13 @@ import AdvertCard from "@/components/UI/AdvertCard.vue";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-
 import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "swiper/css/navigation"; 
 
-import { Pagination, Navigation } from "swiper";
+import { ref } from 'vue';
+import SwiperCore, { Pagination, Navigation } from "swiper";
+import "swiper/swiper.min.css";
+SwiperCore.use([Navigation])
 
 export default {
   name: "HomeView",
@@ -262,26 +273,53 @@ export default {
   data() {
     return {
       tovar: products.products,
-      blog: blog.blog
+      blog: blog.blog,
     }
   },
   setup() {
+    const prevHome = ref(null);
+    const nextHome = ref(null);
     return {
-      modules: [Pagination, Navigation],
       pagination: {
         clickable: true,
+        type: 'bullets',
+        bulletClass: 'bulletsA',
+        bulletActiveClass: 'bulletsA-active',
+        dynamicBullets: true,
         renderBullet: function (index, className) {
-          return '<span class="' + "className" + '">' + (index + 1) + "</span>";
+          return '<span class="' + "bulletsA" + '">' + ('0' + (1 + index)) + "</span>";
         },
       },
+      prevHome,
+      nextHome,
+      modules: [Pagination, Navigation,],
     };
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.className {
 
+.homeimage {
+  position: relative;
+}
+.next-arrow111{
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  z-index: 2;
+  background: white;
+  border-radius:50%;
+  border: 7px solid white;
+}
+.prev-arrow111{
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  z-index: 2;
+   background: white;
+  border-radius:50%;
+  border: 7px solid white;
 }
 
 .block6 {

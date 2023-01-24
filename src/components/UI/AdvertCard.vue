@@ -1,69 +1,92 @@
 <template>
         <div class="advert container">
-        <p class="advert-p1">{{ text }}</p>
+        <div class="swipe">
+            <p class="advert-p1">{{ text }}</p>
+            <div ref="prev1" class="swiper-button-prev222"><img src="@/assets/icons/leftstrok.png"/></div>
+            <div ref="next1" class="swiper-button-next222"><img src="@/assets/icons/rightstrok.png"/></div>
+        </div>
         <swiper
-            :slidesPerView="3"
+            :slidesPerView="slidesPerView"
             :spaceBetween="30"
             :slidesPerGroup="3"
             :loop="true"
             :loopFillGroupWithBlank="true"
+            :direction="'horizontal'"
             :pagination="{
             clickable: true,
             }"
-            :navigation="true"
-            :modules="modules"
+            :navigation="{
+                    nextEl: next1,
+                    prevEl: prev1,
+            }"
             class="mySwiper"
             >
-            <swiper-slide><CardButton class="cardb" :product="products[1]"/></swiper-slide>
-            <swiper-slide><CardButton class="cardb" :product="products[3]"/></swiper-slide>
-            <swiper-slide><CardButton class="cardb" :product="products[5]"/></swiper-slide>
-            <swiper-slide><CardButton class="cardb" :product="products[2]"/></swiper-slide>
-            <swiper-slide><CardButton class="cardb" :product="products[0]"/></swiper-slide>
-            <swiper-slide><CardButton class="cardb" :product="products[7]"/></swiper-slide>
+            <swiper-slide><CardButton class="cardb" :style="'width:' + width" :product="products[1]"/></swiper-slide>
+            <swiper-slide><CardButton class="cardb" :style="'width:' + width" :product="products[3]"/></swiper-slide>
+            <swiper-slide><CardButton class="cardb" :style="'width:' + width" :product="products[5]"/></swiper-slide>
+            <swiper-slide><CardButton class="cardb" :style="'width:' + width" :product="products[2]"/></swiper-slide>
+            <swiper-slide><CardButton class="cardb" :style="'width:' + width" :product="products[0]"/></swiper-slide>
+            <swiper-slide><CardButton class="cardb" :style="'width:' + width" :product="products[7]"/></swiper-slide>
         </swiper>
-        <button class="advert-button">{{button}}</button>
+        <button class="advert-button" :style="'display:' + numbers">{{button}}</button>
         </div>
 </template>
 <script>
+import { ref } from 'vue';
 import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation"; 
-import { Pagination, Navigation } from "swiper";
+import SwiperCore, { Pagination, Navigation } from "swiper";
+import "swiper/swiper.min.css";
+// import "swiper/components/navigation/navigation.min.css";
+
+SwiperCore.use([Navigation])
+
 import CardButton from './CardButton.vue';
 import products from "@/data/products.json"
 
 
+
 export default {
-    props: ["background", "text", "button"],
+    props: ["background", "text", "button", "numbers", "width", "slidesPerView"],
     components: {
-    Swiper,
-    SwiperSlide, CardButton, products
+        Swiper,
+        SwiperSlide,
+        CardButton
     },
     data() {
         return {
-            products: products.products
+            products: products.products,
         }
     },
-  setup() {
-    return {
-      modules: [Pagination, Navigation,],
-    };
+    setup() {
+        const prev1 = ref(null);
+        const next1 = ref(null);
+        return {
+            modules: [Navigation, Pagination],
+            prev1,
+            next1
+        }
   },
 }
 </script>
 <style lang="scss" scoped>
-.cardb {
-    width: 390px !important;
-    img {
-         width: 390px !important;
-    }
+.swipe {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.swiper-button-prev222 {
+    position: absolute;
+    right: 48px;
+    cursor: pointer;
+}
+.swiper-button-next222 {
+        cursor: pointer;
 }
 
 
 .mySwiper {
     margin-top: 60px;
-    margin-bottom: 96px;
     width: auto;
 }
 .advert {

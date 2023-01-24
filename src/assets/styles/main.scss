@@ -38,3 +38,70 @@
     width: 100vw ;
     margin-left: 0;
 }
+
+.bulletsA {
+    display: inline-flex !important;
+    background: #424551; 
+    margin-right: 4px;
+    color: white;
+    font-weight: 700;
+    font-size: 28px;
+    color: #424551;
+    opacity: 0.6;
+    width: 178px !important;
+    cursor: pointer;
+    height: 2px !important;
+}
+.bulletsA-active {
+    opacity: 1;
+}
+
+.category__content__mid__filter__block__content {
+    &::-webkit-scrollbar {
+                width: 4px;
+}
+
+    /* Track */
+        &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    /* Handle */
+        &::-webkit-scrollbar-thumb {
+        background: #B3B7BC;
+}
+
+    /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+        background: #a3a6aa;
+    }
+
+}
+.simple-range-slider-bar {
+    background: teal !important;
+}
+.simple-range-slider-anchor {
+    background: teal !important;
+}
+.simple-range-slider-popover-arrow {
+    display: none !important;
+}
+.simple-range-slider-popover {
+    background: #424551 !important;
+    box-shadow: none !important;
+}
+.simple-range-slider-input-container {
+    color: white !important;
+}
+.simple-range-slider {
+    margin-top: 16px !important;
+    width: 255px !important;
+}
+
+.bulletsNew {
+    background: green !important;
+}
+
+.bullets-activeNew {
+
+}

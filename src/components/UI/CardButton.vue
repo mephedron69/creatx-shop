@@ -2,7 +2,7 @@
     <div class="cardB">
         <div class="card">
         <div class="card__photo">
-            <img class="proimage" :src="require('@/assets/products/'+ product.image + '.png')" />
+            <router-link to="/cart"><img class="proimage" :src="require('@/assets/products/'+ product.image + '.png')" /></router-link>
             <div class="card__photo__like">
                 <img class="card__photo__favour" :class="{activeWishlist: statusWishlist}" @click="addWishlist(product)" src="@/assets/icons/favouricon.png"/>
                 <div class="card__photo__back"></div>
