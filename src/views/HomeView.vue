@@ -27,7 +27,7 @@
               <div ref="nextHome" class="prev-arrow111"><img src="@/assets/icons/rightstrok.png"/></div>
           </swiper>
         </div>
-        <div class="home__block2">
+        <div class="home__block2 container">
             <div class="home__block2__sort">
               <img src="@/assets/products/block2p1.png"/>
               <p class="home__block2__sort__desc">Women’s</p>
@@ -47,6 +47,7 @@
             <router-link to="/">See the collection here</router-link>
             <div class="home__block3-card">
                  <swiper
+                 :breakpoints="breakpoints"
                    :slidesPerView="5"
                 :spaceBetween="30"
                 :pagination="{
@@ -55,7 +56,7 @@
                 :modules="modules"
                 class="mySwiper2"
                 >
-                    <swiper-slide v-for="(item) in tovar">
+                    <swiper-slide  v-for="(item) in tovar">
                       <CardButton :product="item"/>
                     </swiper-slide>
                 </swiper>
@@ -214,10 +215,12 @@
               <div class="home__block9__part2__left">
                   <p class="home__block9__part2__left-p1">Follow us on Instagram</p>
                   <p class="home__block9__part2__left-p2">@createx_store</p>
-                  <div class="home__block9__part2__left-p3">
+                  <a href="http://instagram.com">
+                    <div class="home__block9__part2__left-p3">
                       <img src="@/assets/images/block9inst.png"/>
                       <p>Follow instagram</p>
                   </div>
+                  </a>
               </div>
               <div class="home__block9__part2__right">
                   <img src="@/assets/images/block9p2i1.png"/>
@@ -274,6 +277,19 @@ export default {
     return {
       tovar: products.products,
       blog: blog.blog,
+      breakpoints: {
+        991.98: {
+          slidesPerView: 6,
+        },
+        767.98: {
+          slidesPerView: 3,
+          spaceBetween: 10,
+        },
+        0: {
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+      },
     }
   },
   setup() {
@@ -283,6 +299,7 @@ export default {
       pagination: {
         clickable: true,
         type: 'bullets',
+        horizontalClass: 'bullets-content',
         bulletClass: 'bulletsA',
         bulletActiveClass: 'bulletsA-active',
         dynamicBullets: true,
@@ -311,6 +328,9 @@ export default {
   background: white;
   border-radius:50%;
   border: 7px solid white;
+  @media (max-width: $mobile + px) {
+        display: none;
+    }
 }
 .prev-arrow111{
   position: absolute;
@@ -320,6 +340,9 @@ export default {
    background: white;
   border-radius:50%;
   border: 7px solid white;
+  @media (max-width: $mobile + px) {
+        display: none;
+    }
 }
 
 .block6 {
@@ -337,8 +360,8 @@ export default {
     }
     .homeblock {
       position: absolute;
-      left: 200px;
-      top: 120px;
+      left: 10%;
+      top: 15%;
     }
     position: relative;
     width: 100%;
@@ -376,15 +399,31 @@ export default {
            letter-spacing: 0.5px;
         }
     }
+     @media (max-width: $mobile + px) {
+      &-p1 {
+        font-size: 15px;
+      }
+      &-p2 {
+        font-size: 15px;
+      }
+      &__p3 {
+        &-left {
+          font-size: 8px;
+        }
+        &-right {
+          font-size: 8px;
+        }
+      }
+     }
   }
    &__block2 {
       display: flex;
-      gap: 30px;
-      justify-content: center;
+      justify-content: space-between;
       margin-top: -52px;
       position: relative;
       z-index: 2;
-      &__sort {
+      &__sort {  
+        width: 30.81%;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -396,6 +435,9 @@ export default {
           color: #424551;
         }
       }
+      @media (max-width: $mobile + px) {
+
+     }
   }
    &__block3 {
     display: flex;
@@ -418,10 +460,17 @@ export default {
         margin-bottom: 60px;
       }
       &-card {
-        display: flex;
-        gap: 30px;
+        width: 100%;
+        margin: 0 30px 180px;
+        @media (max-width: $mobile + px) {
+          margin: 0 0 50px;
+        }
       }
-     
+       @media (max-width: $mobile + px) {
+          &-name {
+            margin-top: 50px;
+          }
+       }
   }
 
   &__block4 {
@@ -446,6 +495,16 @@ export default {
           width: 100%;
           height: 500px;
         }
+        @media (max-width: $mobile + px) {
+          display: flex;
+          flex-direction: column;
+          &-left {
+            width: 100%;
+          }
+          &-right {
+            width: 100%;
+          }
+        }
     }
 
     &__bot {
@@ -463,6 +522,16 @@ export default {
           object-fit: cover;
           width: 100%;
           height: 500px;
+        }
+        @media (max-width: $mobile + px) {
+          display: flex;
+          flex-direction: column;
+          &-left {
+            width: 100%;
+          }
+          &-right {
+            width: 100%;
+          }
         }
     }
     .inblock {
@@ -564,6 +633,15 @@ export default {
           font-weight: 700;
           font-size: 20px;
         }
+        @media (max-width: $mobile + px) {
+          flex-wrap: wrap;
+          img {
+            width: 100px;
+          }
+        }
+      }
+      @media (max-width: $mobile + px) {
+        margin: 50px 0 ;
       }
   }
 
@@ -577,6 +655,13 @@ export default {
       position: absolute;
         bottom: -55px;
         left: 0px;
+        @media (max-width: $mobile + px) {
+          width: 250px;
+          bottom: -55px;
+          opacity: 0.4;
+        left: 0px;
+        z-index: 1;
+        }
     }
      &__right {
          margin-left: 50%;
@@ -613,6 +698,15 @@ export default {
            font-weight: 900;
           font-size: 32px;
                 color: #FFFFFF;
+          @media (max-width: $mobile + px) {
+          font-size: 22px;
+          width: 100%;
+        }
+        }
+        @media (max-width: $mobile + px) {
+          margin-left: 0;
+          position: relative;
+          z-index: 2;
         }
     }
   }
@@ -669,6 +763,9 @@ export default {
               padding: 10px 25px;
               cursor: pointer;
           }
+          a {
+            text-decoration: none;
+          }
       }
       &__right {
           display: flex;
@@ -717,6 +814,9 @@ export default {
 .chapka-img {
   height: 800px;
   object-fit: cover;
+  @media (max-width: $mobile + px) {
+        height: 250px;
+     }
 }
 .block4p4 {
   width: auto !important;

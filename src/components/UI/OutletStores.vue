@@ -1,6 +1,6 @@
 <template>
    <div class="outlet__block">
-            <img :src="require('@/assets/images/' + image + '.png')"/>
+            <img class="outletimg" :src="require('@/assets/images/' + image + '.png')"/>
             <p class="outlet-p1">{{ text }}</p>
             <div class="cp3">
                         <div class="contact__top__contact-p2">
@@ -28,7 +28,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+.outletimg {
+    width: 100%;
+}
   .outlet__block {
         border: 2px solid rgb(232, 232, 232);
         width: fit-content;

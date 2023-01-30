@@ -6,13 +6,13 @@
         <p class="signin-p2">Sign in to your account using email and password provided during registration.</p>
         <div class="signin__mail">
             <p >Email</p>
-            <input class="input" type="text" placeholder="Your working email"/>
+            <input class="input" type="text" placeholder="Your working email" v-model="login"/>
         </div>
         <div class="signin__pass">
             <p>Password</p>
             <div class="signin__pass__top">
-                <input class="input" type="password" />
-                <img src="@/assets/icons/eyepass.png"/>
+                <input class="input" :type="showPass ? 'text' : 'password'"  v-model="password"/>
+                <img src="@/assets/icons/eyepass.png" @click="showPass = !showPass"/>
             </div>
         </div>
         <div class="signin__forgot">
@@ -23,7 +23,7 @@
             <p class="signin__forgot-right">Forgot password?</p>
         </div>
         <div class="signin__in">
-            <button class="signin__in-button">Sign in</button>
+            <button class="signin__in-button" @click="signIn">Sign in</button>
         </div>
         <div class="signin__up">
             <p>Don't have an account?</p>
@@ -49,10 +49,30 @@
     </div>
 </template>
 <script>
+import users from "@/data/users.json"
+import { mapActions } from 'vuex'
 export default {
     name: "SingIn",
     data() {
         return {
+            showPass: false,
+            users: users.users,
+            login: "mephed.ron",
+            password: "MamaQueen7"
+        }
+    },
+    methods: {
+        ...mapActions(["checkAuth"]),
+        signIn() {
+            if (this.users.find(item => item.log == this.login && item.password == this.password)) {
+                localStorage.setItem("login", this.login)
+                this.$router.push("/account")
+                this.$emit('closeModal', false)
+                this.checkAuth()
+            }
+            else {
+                alert("Неверный логин или пароль!")
+            }
         }
     }
 }

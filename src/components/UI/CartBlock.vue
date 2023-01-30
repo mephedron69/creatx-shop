@@ -143,31 +143,194 @@
         </div>
     </div>
     <div class="detail" v-if="cardId == 1">
-        fff
+        <div class="detail__left">
+            <div class="detail__left__details">
+                <p class="detail__left__details-name">Details</p>
+                <p class="detail__left__details-desc">Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna sed facilisis nulla feugiat amet venenatis. Id suspendisse ut quis tellus aliquam pellentesque neque, semper donec.</p>
+                <div class="detail__left__details__li">
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Brand: Jordan</span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Color: gray / red / yellow</span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Mid-cut design</span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Lace-up fastening </span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Rubber outsole pods for durability and traction</span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Moulded grooves in forefoot offer added flexibility</span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Padded cuff with inner nodes designed to offer comfort and support around the Achilles tendon</span></li>                    
+                </div>
+            </div>
+            <div class="detail__left-line"></div>
+            <div class="detail__left__details">
+                <p class="detail__left__details-name">Fabric</p>
+                <div class="detail__left__details__li">
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Upper: 50% real leather, 50% textile</span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Lining: 100% textile</span></li>
+                    <li class="detail__left__details__li-dot"><span class="detail__left__details__li-name">Sole: 100% other materials</span></li>                
+                </div>
+            </div>
+            <div class="detail__left-line"></div>
+            <div class="care">
+                <p class="detail__left__details-name">Care</p>
+                <div class="detail__left__care">
+                    <div class="detail__left__care__box">
+                    <img src="@/assets/icons/care1.png"/>
+                    <p>Hand wash only (30°)</p>
+                </div>
+                <div class="detail__left__care__box">
+                    <img src="@/assets/icons/care2.png"/>
+                    <p>No ironing</p>
+                </div>
+                <div class="detail__left__care__box">
+                    <img src="@/assets/icons/care3.png"/>
+                    <p>Do not use any bleach</p>
+                </div>
+                <div class="detail__left__care__box">
+                    <img src="@/assets/icons/care4.png"/>
+                    <p>Do not tumble dry</p>
+                </div>
+                </div>
+            </div>
+        </div>
+        <CardButton  class="detail__right" :product="products[1]"/>
     </div>
     <div class="review" v-if="cardId == 2">
-        Review
+        <div class="review__left">
+            <div class="review__left__block1">
+                <div class="review__left__block1__review">
+                    <p class="review__left__block1__review-name">12 reviews</p>
+                    <div class="review__left__block1__review-star">
+                        <img src="@/assets/icons/stary.png"/>
+                         <img src="@/assets/icons/stary.png"/>
+                          <img src="@/assets/icons/stary.png"/>
+                           <img src="@/assets/icons/stary.png"/>
+                            <img src="@/assets/icons/starw.png"/>
+                    </div>
+                    <div class="review__left__block1__review-pros">
+                        <p>9 out of 12 (75%) <br/>
+                        Customers recommended this product</p>
+                    </div>
+                </div>
+                <div class="review__left__block1__rating">
+                    <div class="review__left__block1__rating__box">
+                        <div class="review__left__block1__rating__box-star">
+                            <p>5</p>
+                            <img src="@/assets/icons/starw.png"/>
+                        </div>
+                        <div class="middle">
+                            <div class="mid-background">
+                                <div class="star5"></div>
+                            </div>
+                        </div>
+                        <p>7</p>
+                    </div>
+                    <div class="review__left__block1__rating__box">
+                        <div class="review__left__block1__rating__box-star">
+                            <p>4</p>
+                            <img src="@/assets/icons/starw.png"/>
+                        </div>
+                        <div class="middle">
+                            <div class="mid-background">
+                                <div class="star4"></div>
+                            </div>
+                        </div>
+                        <p>3</p>
+                    </div>
+                    <div class="review__left__block1__rating__box">
+                        <div class="review__left__block1__rating__box-star">
+                            <p>3</p>
+                            <img src="@/assets/icons/starw.png"/>
+                        </div>
+                        <div class="middle">
+                            <div class="mid-background">
+                                <div class="star3"></div>
+                            </div>
+                        </div>
+                        <p>1</p>
+                    </div>
+                    <div class="review__left__block1__rating__box">
+                        <div class="review__left__block1__rating__box-star">
+                            <p>2</p>
+                            <img src="@/assets/icons/starw.png"/>
+                        </div>
+                        <div class="middle">
+                            <div class="mid-background">
+                                <div class="star2"></div>
+                            </div>
+                        </div>
+                        <p>1</p>
+                    </div>
+                    <div class="review__left__block1__rating__box">
+                        <div class="review__left__block1__rating__box-star">
+                            <p>1</p>
+                            <img src="@/assets/icons/starw.png"/>
+                        </div>
+                        <div class="middle">
+                            <div class="mid-background">
+                                <div class="star1"></div>
+                            </div>
+                        </div>
+                        <p>1</p>
+                    </div>
+                </div>
+            </div>
+            <div class="review__left__sort">
+                <div class="review__left__sort-button" @click="openComment = true">Leave a review</div>
+                <LeaveReview class="comment" @click="openComment = false" @closeComment="closeComment" v-if="openComment"/>
+                <div class="review__left__sort-sort">
+                    <p>Sort by</p>
+                    <select>
+                        <option>newest</option>
+                        <option>lowes</option>
+                        <option>new</option>
+                        <option>popular</option>
+                    </select>
+                </div>
+            </div>
+            <div class="review__left__comments">
+
+            </div>
+        </div>
+        <CardButton  class="review__right" :product="products[1]"/>
     </div>
     </div>
 </template>
 <script>
+import CardButton from './CardButton.vue';
+import products from "@/data/products.json"
+import LeaveReview from "@/components/UI/LeaveReview.vue"
 export default {
     props: ["cart"],
     data() {
         return {
             openReturn: false,
             openDelivery: false,
-            cardId: 0
+            cardId: 0,
+            products: products.products,
+            openComment: false
         }
     },
     methods: {
         openCard(id) {
             this.cardId = id;
+        },
+        closeComment(value) {
+            this.openComment = value;
         }
-    }
+        
+    },
+    components: {CardButton, LeaveReview}
 }
 </script>
 <style lang="scss" scoped>
+.comment {
+     z-index: 4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.4); /*Черный с непрозрачностью */
+    width: 100%; 
+    height: 100%; 
+    display: flex;
+    justify-content: center ;
+}
 .delivery {
     padding: 0 25px;
     margin-bottom: 12px;
@@ -392,6 +555,174 @@ export default {
                 }    
             }
         }
-        
+.detail {
+    width: 100%;
+    gap: 8.29%;
+    display: flex;
+    justify-content: space-between;
+    &__left {
+        width: 58.6%;
+        &__details {
+            &-name {
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 16px;
+            }
+            &-desc {
+                color: #424551;
+                margin-bottom: 20px;
+            }
+            &__li {
+                width: 65%;
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                &-dot {
+                    color: teal;
+                }
+                &-name {
+                    color: black;
+                }
+            }
+        }
+        &-line {
+            border: 1px solid #E5E8ED;
+            margin: 24px 0;
+        }
+        &__care {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            &__box {
+                display: flex;
+                gap: 16px;
+            }
+        }
+    }
+    &__right {
+        width: 30.81%;
+    }
+}     
 
+.review {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8.29%;
+    &__left {
+        width: 60.90%;
+        &__block1 {
+            width: 100%;
+            gap: 10.38%;
+            display: flex;
+            justify-content: space-between;
+            &__review {
+                width: 30.48%;
+                &-name {
+                    font-weight: 900;
+                    font-size: 32px;
+                }
+                &-star {
+                    display: flex;
+                    gap: 4px;
+                    margin: 20px 0;
+                }
+                &-pros {
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #787A80;
+                }
+            }
+            &__rating {
+                width: 59.14%;
+                margin-right: 1px;
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                &__box {
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+                    &-star {
+                        display: flex;
+                        align-items: center;
+                        gap: 2px;
+                    }
+                    .middle {
+                        width: 100%;
+                    }
+                    .mid-background {
+                            width: 100%;
+                            background: #E5E8ED;
+                            text-align: center;
+                            color: white;
+                        }
+                    .star5 {
+                        width: 70%;
+                        height: 4px;
+                        background: lawngreen;
+                    }
+                    .star4 {
+                        width: 40%;
+                        height: 4px;
+                        background: green;
+                    }
+                    .star3 {
+                        width: 20%;
+                        height: 4px;
+                        background: yellow;
+                    }
+                    .star2 {
+                        width: 20%;
+                        height: 4px;
+                        background: orange;
+                    }
+                    .star1 {
+                        width: 20%;
+                        height: 4px;
+                        background: red;
+                    }
+                }
+            }
+        }
+        &__sort {
+            margin-top: 80px;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            &-button {
+                height: fit-content;
+                display: flex;
+                font-weight: 700;
+                font-size: 14px;
+                color: white;
+                padding: 13.6px 0;
+                width: 180px;
+                justify-content: center;
+                background: teal;
+                border-radius:4px;
+            }
+            &-sort {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                select {
+                    width: 170px;
+                    background: #FFFFFF;
+                    border: 1px solid #D7DADD;
+                    border-radius: 4px;
+                    padding: 13.6px 16px;
+                    height: fit-content;
+                    outline: none;
+                    option {
+                        margin: 5px;
+                    }
+                }
+            }
+    }
+    }
+    &__right {
+        width: 30.81%;
+    }
+}
 </style>

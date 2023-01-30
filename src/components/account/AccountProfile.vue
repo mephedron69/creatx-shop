@@ -79,7 +79,6 @@ export default {
         }
     }
     &__bot {
-        margin-bottom: 180px;
         &__button {
             border: none;
             background: #17696A;;

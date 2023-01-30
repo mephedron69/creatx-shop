@@ -1,6 +1,6 @@
 <template>
                   <div class="fashion__bot__blog">
-                      <img class="fashion__bot__blog__img" :src="require('@/assets/images/'+ blogs.image + '.png')" />
+                      <router-link to="blog-card"><img class="fashion__bot__blog__img" :src="require('@/assets/images/'+ blogs.image + '.png')" /></router-link>
                       <p class="fashion__bot__blog__p1"> {{ blogs.name }}</p>
                       <div class="fashion__bot__blog__p2">
                         <p>{{ blogs.category }}</p>

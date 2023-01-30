@@ -138,6 +138,8 @@ export default {
             margin-bottom: 60px;
         }
         &__content {
+            width: 100%;
+            gap: 10.66%;
             display: flex;
             justify-content: space-between;
         }

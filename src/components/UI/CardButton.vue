@@ -91,15 +91,18 @@ export default {
     width: 100%;
 }
 .cardB {
-    margin-bottom: 260px;
-    width: 285px;
-    height: 413px;
+    // margin-bottom: 260px;
+    // width: 285px;
 }
-.iconteal {
-     position: relative;
-    display: none;
-}
+
+// .iconteal {
+//      position: relative;
+//     display: none;
+// }
+
 .card {
+        position: relative;
+            z-index: 3;
     &__photo {
         position: relative;
         &__like {
@@ -156,11 +159,17 @@ export default {
         max-height: 100wh;
         padding-bottom: 16px;
         .info {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 4;
             display: block;
         &__top {
             display: flex;
             justify-content: space-between;
             margin: 20px 16px;
+            height: 50px;
         }
         &__button {
             justify-content: center;

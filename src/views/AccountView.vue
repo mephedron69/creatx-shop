@@ -15,26 +15,26 @@
                     <p class="account__filter__left__user-p1">Dauren Amankulov</p>
                     <p class="account__filter__left__user-p2">amankulov.d.t@gmail.com</p>
                 </div>
-                <div class="account__filter__left__sorts" v-for="item in nav" :key="item" @click="sortAccount(item.id)">
+                <div class="account__filter__left__sorts" :class="{activeAccount: sortId == item.slug}" v-for="item in nav" :key="item" @click="$router.push('/account/'+item.slug)">
                     <img :src="require('@/assets/icons/' + item.icon + '.png')"/>
                     <p>{{ item.text }}</p>
                 </div>
             </div>
-            <div class="account__filter__profile" v-if="sortId == 0">
+                <div class="account__filter__profile" v-if="sortId == 'my-profile'">
                 <profile />
-            </div>
-            <div class="account__filter__orders" v-else-if="sortId == 1">
-                <order />
-            </div>
-            <div class="account__filter__orders" v-else-if="sortId == 2">
-                <wishlist />
-            </div>
-            <div class="account__filter__orders" v-else-if="sortId == 3">
-                <viewed />
-            </div>
-            <div class="account__filter__orders" v-else-if="sortId == 4">
-                <review />
-            </div>
+                </div>
+                <div class="account__filter__orders" v-else-if="sortId == 'my-orders'">
+                    <order />
+                </div>
+                <div class="account__filter__orders" v-else-if="sortId == 'my-wishlist'">
+                    <wishlist />
+                </div>
+                <div class="account__filter__orders" v-else-if="sortId == 3">
+                    <viewed />
+                </div>
+                <div class="account__filter__orders" v-else-if="sortId == 4">
+                    <review />
+                </div>
         </div>
     </div>
 </template>
@@ -53,13 +53,13 @@ export default {
     },
     data() {
         return {
-            sortId: 0,
+            sortId: "my-profile",
             nav: [
-                { id: 0, icon: "accountp1", text: "My profile" },
-                { id: 1, icon: "accountp2", text: "My orders" },
-                { id: 2, icon: "accountp3", text: "Wishlist" },
-                { id: 3, icon: "accountp4", text: "Recently viewed" },
-                { id: 4, icon: "accountp5", text: "My reviews" },
+                { id: 0, icon: "accountp1", text: "My profile", slug: 'my-profile' },
+                { id: 1, icon: "accountp2", text: "My orders", slug: 'my-orders'  },
+                { id: 2, icon: "accountp3", text: "Wishlist", slug: 'my-wishlist'  },
+                { id: 3, icon: "accountp4", text: "Recently viewed", slug: 'recently-viewed'  },
+                { id: 4, icon: "accountp5", text: "My reviews", slug: 'my-reviews'  },
                 { id: 5, icon: "accountp6", text: "Sign out" },
             ]
         }
@@ -68,11 +68,22 @@ export default {
         sortAccount(id) {
             this.sortId = id
         }
+    },
+    mounted() {
+        this.sortId = this.$route.params.id
+    },
+    watch: {
+        $route() {
+            this.sortId = this.$route.params.id
+        }
     }
 }
 </script>
 <style lang="scss" scoped>
-
+.activeAccount {
+    background: teal;
+    color: white;
+}
 .account {
     .account-back{
         background: #F4F5F7;
@@ -92,6 +103,7 @@ export default {
        }
     }
     &__filter {
+        margin-bottom: 180px;
         display: flex;
         justify-content: space-between;
         margin-top: 40px;

@@ -53,7 +53,7 @@
                     </div>
                     <div class="contact__top__contact__mid__block">
                         <p class="contact__top__contact__mid__block-desc">Message*</p>
-                        <input class="contact__top__contact__mid__block-input message" type="message" placeholder="Write your message here"/>
+                        <textarea class="contact__top__contact__mid__block-input message" type="message" placeholder="Write your message here"/>
                     </div>
                 </div>
                 <button class="button1">Send message</button>
@@ -241,6 +241,38 @@ export default {
                     }
                 }
         }
+         @media (max-width: $mobile + px) {
+             margin-bottom: 50px;
+            margin-top: 5px;
+            display: flex;
+            flex-direction: column;
+            &__left {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 5px;
+                button {
+                    font-size: 12px;
+                }
+            }
+            &__contact {
+                width: 100%;
+                &__mid {
+                    &__block {
+                        width: 100%;
+                        input {
+                            box-sizing: border-box;
+                            width: 100%;
+                        }
+                        textarea {
+                            box-sizing: border-box;
+                            max-width: 100%;
+                            resize: none;
+                        }
+                    }
+                }
+            }
+         }
     }
 }
 </style>

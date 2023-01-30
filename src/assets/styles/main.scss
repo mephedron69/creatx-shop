@@ -1,23 +1,49 @@
 @import "variables";
 
+$minWidth: 320;
+
+// Ширина полотна (макета)
+$maxWidth: 1920;
+
+// Ширина ограничивающего контейнера (0 = нет ограничения)
+$maxWidthContainer: 1340;
+
+// Общий отступ у контейнера
+// (30 = по 15px слева и справа, 0 = нет отступа)
+$containerPadding: 30;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: $containerWidth; // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$laptop: 1366.98;
+$tablet: 991.98; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767.98; // Телефоны L
+$mobileSmall: 479.98; // Телефоны S
+
+* {
+    font-family: 'Inter';
+}
+
 .container {
     width: 1266px;
     margin: 0 auto;
 
-    @media screen and (max-width: $laptop) {
+    @media screen and (max-width: $laptop + px) {
         width: 1140px;
     }
 
-    @media screen and (max-width: $tablet) {
+    @media screen and (max-width: $tablet + px) {
         width: 960px;
     }
 
-    @media screen and (max-width: $mobile) {
+    @media screen and (max-width: $mobile + px) {
         width: 720px;
     }
 
-    @media screen and (max-width: $mobileSmall) {
-        width: 540px;
+    @media screen and (max-width: $mobileSmall + px) {
+        width: 95%;
     }
 }
 
@@ -30,18 +56,16 @@
             -ms-border-radius: 5px !important;
             -o-border-radius: 5px !important;
 }
-.swiper-pagination {
-    bottom: 176px !important;
-}
 
-.swiper {
-    width: 100vw ;
-    margin-left: 0;
-}
+
+// .swiper {
+//     width: 1100px ;
+//     margin-left: 0;
+// }
 
 .bulletsA {
+    margin-bottom: 22% !important;
     display: inline-flex !important;
-    background: #424551; 
     margin-right: 4px;
     color: white;
     font-weight: 700;
@@ -50,10 +74,22 @@
     opacity: 0.6;
     width: 178px !important;
     cursor: pointer;
-    height: 2px !important;
+    border-bottom: 2px solid #424551;
+    @media (max-width: $mobile + px) {
+        display: none;
+    }
 }
 .bulletsA-active {
+    @media (max-width: $mobile + px) {
+            display: none;
+        }
     opacity: 1;
+}
+.bullets-content {
+    @media (max-width: $mobile + px) {
+            display: none;
+        }
+    left: 37% !important;
 }
 
 .category__content__mid__filter__block__content {

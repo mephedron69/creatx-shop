@@ -2,7 +2,10 @@
     <div class="header">
         <div class="topback">
              <div class="header__top container">
-            <p>Available 24/7 at (405) 555-0128</p>
+            <div class="tel">
+                <p>Available 24/7 at </p>
+                <a href="tel:87476328976"><p>(405) 555-0128</p></a>
+            </div>
             <div class="header__top__p2">
                 <p>Delivery & returns</p>
                 <router-link to="/track"><p>Track order</p></router-link>
@@ -12,12 +15,12 @@
             <div class="header__top__p3">
                 <div class="header__top__p3__currence">
                     <img src="@/assets/icons/flagusa.png"/>
-                    <select>
+                    <select style="cursor: pointer;">
                         <option>Eng / $</option>
                         <option>Rus / $</option>
                     </select>
                 </div>
-                <div class="header__top__p3__profil">
+                <div class="header__top__p3__profil" v-if="!getAuth">
                     <img src="@/assets/icons/profilicon.png"/>
                     <p @click="signIn = true" style="cursor: pointer;">Log in</p>
                     <sign-in @click="signIn=false" @closeModal="closeModel" class="signin" v-if="signIn"/>
@@ -25,12 +28,16 @@
                     <p @click="signUp = true" style="cursor: pointer;"> Register</p>
                     <sign-up @click="signUp=false" @closeModal1="closeModel1" class="signup" v-if="signUp"/>
                 </div>
+                <div v-else class="header__top__p3__profil" @click="$router.push('/account/my-profile')">
+                    <img src="@/assets/icons/profilicon.png"/>
+                    <p  style="cursor: pointer;">Account</p>
+                </div>
             </div>
         </div>
         </div>
         <div class="header__middle container">
             <div class="header__middle__left">
-                <router-link to="/"><img src="@/assets/icons/logoshop.png"/></router-link>
+                <router-link to="/" class="menu"><img class="menu-open" src="@/assets/icons/menu.png"/><img src="@/assets/icons/logoshop.png"/></router-link>
                 <div class="header__middle__left-sort">
                     <p @click="categoryNav = !categoryNav">Women</p>
                     <category-nav class="navigation" v-if="categoryNav"/>
@@ -48,12 +55,12 @@
 
                 <div class="header__middle__right__p2">
                     <div class="favbas">
-                         <router-link to="/account"><img src="@/assets/icons/favouricon.png"/></router-link>
+                         <router-link to="/account/my-wishlist"><img src="@/assets/icons/favouricon.png"/></router-link>
                         <p>2</p>
                     </div>
                     <div class="favbas">
-                        <img src="@/assets/icons/basketicon.png" @click="openCheckout = !openCheckout" />
-                        <checkout-window v-if="openCheckout" class="checkout-modal"/>
+                        <img src="@/assets/icons/basketicon.png" @click="openCheckout = true" style="cursor: pointer;" />
+                        <checkout-window @click="openCheckout = false" @closeCheckout="closeCheckout" v-if="openCheckout" class="checkout-modal"/>
                         <p class="favbas-style">4</p>
                     </div>
                 </div>
@@ -74,6 +81,7 @@ import CategoryNav from '../UI/CategoryNav.vue';
 import SignIn from '../UI/SignIn.vue';
 import SignUp from '../UI/SignUp.vue';
 import CheckoutWindow from '../UI/CheckoutWindow.vue';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     components: { SignIn, SignUp, CategoryNav, CheckoutWindow},
@@ -85,19 +93,35 @@ export default {
             openCheckout: false
         }
     },
+    computed: {
+        ...mapGetters(["getAuth"])
+    },  
+    mounted() {
+        this.checkAuth()
+    },
     methods: {
+        ...mapActions(["checkAuth"]),
         closeModel(value) {
-            console.log(value);
             this.signIn = value;
         },
         closeModel1(value) {
-            console.log(value);
             this.signUp = value;
+        },
+        closeCheckout(value) {
+            this.openCheckout = value   
         }
     }
 }
 </script>
 <style lang="scss" scoped>
+.tel {
+    display: flex;
+    gap: 3px;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
 .checkout-modal {
     z-index: 4;
     position: fixed;
@@ -132,7 +156,7 @@ export default {
 }
 
 .signup{
-    z-index: 4;
+    z-index: 5;
     position: fixed;
     top: 0;
     left: 0;
@@ -144,7 +168,6 @@ export default {
 }
 
 .header {
-    
     .topback{
        background: #1E212C;
     }
@@ -152,12 +175,14 @@ export default {
         background: #17696A;
     }
     &__top {
-        padding: 11px 0 12px;
+        padding: 12px 0;
         font-size: 14px;
         display: flex;
         justify-content: space-between;
         color: white;
-
+        @media (max-width: $mobile + px) {
+            display: none;
+        }
         &__p2 {
             display: flex;
             gap: 32px;
@@ -206,16 +231,39 @@ export default {
                     text-decoration: none;
                     color: black;
                 }
+                @media (max-width: $mobile + px) {
+                    display: none;
+                }
             }
+            
+            .menu {
+            display: flex;
+            gap: 5px;
+                &-open {
+                    display: none;
+                }
+                @media (max-width: $mobile + px) {
+                    align-items: center;
+                    gap: 10px;
+                    &-open {
+                        display: block;
+                        width: 22px;
+                    }
+                }
+            }
+
         }
         &__right {
             display: flex;
             gap: 48px;
+            align-items: center;
             &__p1 {
                 color: #9A9CA5;
                 display: flex;
                 align-items: center;
-                gap: 163px;
+                justify-content: space-between;
+                width: 380px;
+                box-sizing: border-box;
                 border: 1px solid #D7DADD;
                 border-radius: 4px;
                 padding: 11px 15px;
@@ -240,6 +288,36 @@ export default {
                 }
             }
         }
+        @media (max-width: $mobile + px) {
+            margin-top: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            &__left {
+                gap: 0;
+                img {
+                    width: 90px;
+                }
+            }
+            &__right {
+                margin-top: -30px;
+                flex-direction: column-reverse;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                &__p1 {
+                    width: 100%;
+                }
+                &__p2 {
+                    gap: 1px;
+                    display: flex;
+                    align-items: center;
+                    margin-left: auto;
+                    gap: 10px;
+                }
+            }
+        }
     }
     &__bot {
         display: flex;
@@ -250,6 +328,9 @@ export default {
         font-weight: 400;
         font-size: 12px;
         text-decoration: underline;
+        @media (max-width: $mobile + px) {
+                padding: 5px 0 5px;
+        }
     }
 }
 

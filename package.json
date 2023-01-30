@@ -12,6 +12,7 @@
     "swiper": "^8.4.6",
     "vue": "^3.2.13",
     "vue-click-outside": "^1.1.0",
+    "vue-i18n": "^9.2.2",
     "vue-router": "^4.0.3",
     "vue-simple-range-slider": "^1.0.0",
     "vuex": "^4.0.0"

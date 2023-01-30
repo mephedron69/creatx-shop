@@ -12,6 +12,11 @@ const routes = [
     component: () => import("@/views/AccountView.vue")
   },
   {
+    path: "/account/:id",
+    name: "AccountViewId",
+    component: () => import("@/views/AccountView.vue")
+  },
+  {
     path: "/blog",
     name: "BlogView",
     component: () => import("@/views/BlogView.vue")
@@ -40,6 +45,11 @@ const routes = [
     path: "/cart",
     name: "CartView",
     component: () => import("@/views/CartView.vue")
+  },
+    {
+    path: "/blog-card",
+    name: "BlogCardView",
+    component: () => import("@/views/BlogCardView.vue")
   }
   
 ]

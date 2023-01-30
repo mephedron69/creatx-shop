@@ -29,11 +29,11 @@
                         <p>Email: hello@createx.com</p>
                     </div>
                     <div class="social">
-                        <div class="social__div"><img src="@/assets/icons/facebook.png"/></div>
-                        <div class="social__div"><img src="@/assets/icons/inst.png"/></div>
-                        <div class="social__div"><img src="@/assets/icons/twitter.png"/></div>
-                        <div class="social__div"><img src="@/assets/icons/youtube.png"/></div>
-                        <div class="social__div"><img src="@/assets/icons/pinterest.png"/></div>
+                        <soc-icon icon="facebookW" background="#3b3e49;"/>
+                        <soc-icon icon="instW" background="#3b3e49;"/>
+                        <soc-icon icon="twitW" background="#3b3e49;"/>
+                        <soc-icon icon="youtubeW" background="#3b3e49;"/>
+                        <soc-icon icon="pinterestW" background="#3b3e49;"/>
                     </div>
                 </div>
             </div>
@@ -71,8 +71,9 @@
     </div>  
 </template>
 <script>
+import SocIcon from '../UI/SocIcon.vue';
 export default {
-    
+    components: {SocIcon}
 }
 </script>
 <style lang="scss" scoped>
@@ -175,6 +176,16 @@ export default {
                 color: #FFFFFF;
         }
     }
+    @media (max-width: $mobile + px) {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        &__left {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+   }
 }
 &__bot {
     display: flex;

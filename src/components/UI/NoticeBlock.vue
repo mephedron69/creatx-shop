@@ -33,6 +33,9 @@ export default {
     background: #F4F5F7;
     width: 100%;
     padding: 100px 0;
+     @media (max-width: $mobile + px) {
+        padding: 70px 0;
+   }
 }
 .noticeicon{
     position: absolute;
@@ -100,6 +103,22 @@ export default {
             accent-color: teal;
         }
     }
-
+     @media (max-width: $mobile + px) {
+        img {
+            width: 150px;
+                position: absolute;
+                 bottom: 8%;
+                 right: 7%;
+                 z-index: 1;
+        }
+        &__subs {
+            z-index: 2;
+            position: relative;
+        }
+        &__agree {
+            z-index: 2;
+            position: relative;
+        }
+    }
 }
 </style>

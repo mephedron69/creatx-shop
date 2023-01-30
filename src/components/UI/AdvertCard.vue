@@ -6,6 +6,7 @@
             <div ref="next1" class="swiper-button-next222"><img src="@/assets/icons/rightstrok.png"/></div>
         </div>
         <swiper
+            :breakpoints="breakpoints"
             :slidesPerView="slidesPerView"
             :spaceBetween="30"
             :slidesPerGroup="3"
@@ -55,6 +56,19 @@ export default {
     data() {
         return {
             products: products.products,
+            breakpoints: {
+            991.98: {
+            slidesPerView: 3,
+            },
+            767.98: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            },
+            0: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            },
+        },
         }
     },
     setup() {
@@ -101,9 +115,12 @@ export default {
         border-radius: 4px;
         padding: 15px 42px;
         display: flex;
-        margin: auto;
+        justify-content: space-between;
         color: teal;
         background: none;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 96px;
     }
 }  
 </style>

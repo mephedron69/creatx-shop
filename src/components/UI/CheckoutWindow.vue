@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <div class="cwindow">
+    <div class="win">
+        <div class="cwindow" @click.stop="$emit('closeCheckout', true)">
         <div class="cwindow__counter">
             <p>Your cart (4)</p>
-            <img src="@/assets/icons/closeicon.png"/>
+            <img style="cursor: pointer;" src="@/assets/icons/closeicon.png" @click.capture="$emit('closeCheckout', false)"/>
         </div>
         <div class="center">
             <div v-for="(item,index) in checkout" :key="index">
@@ -20,12 +20,14 @@
                 <p class="cwindow__subtotal__sum-p1">Subtotal:</p>
                 <p class="cwindow__subtotal__sum-p2">$198.65</p>
             </div>
-            <div class="cwindow__subtotal__button">
-                <img src="@/assets/icons/cardicon.png"/>
-                <p>Checkout</p>
-            </div>
+            <router-link to="/checkout" @click.capture="$emit('closeCheckout', false)">
+                <div class="cwindow__subtotal__button">
+                    <img src="@/assets/icons/cardicon.png"/>
+                    <p>Checkout</p>
+                </div>
+            </router-link>
         </div>
-    </div>
+        </div>
     </div>
 </template>
 <script>
@@ -46,6 +48,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped> 
+.win {
+    display: flex;
+    flex-direction: row-reverse;
+}
 .center {
     margin-top: 16px;
     margin-bottom: 156px;
@@ -64,7 +70,7 @@ export default {
 .cwindow {
     background: white;
     padding: 32px 24px;
-    max-width: 307px;
+    width: 20.83%;
     &__counter {
         font-weight: 700;
         font-size: 20px;
@@ -75,6 +81,7 @@ export default {
     }
     &-line {
         border: 1px solid #E5E8ED;
+        margin: 0 -24px;
     }
     &__card {
         display: flex;
@@ -102,6 +109,9 @@ export default {
             border-radius: 4px;
             justify-content: center;
             gap: 9px;
+        }
+        a {
+            text-decoration: none;
         }
     }
 }

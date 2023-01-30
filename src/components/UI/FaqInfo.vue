@@ -24,6 +24,7 @@ export default {
         &__top {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             &-p1 {
                 font-weight: 700;
                 font-size: 20px;
