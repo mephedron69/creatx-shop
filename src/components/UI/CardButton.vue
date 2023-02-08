@@ -1,6 +1,5 @@
 <template>
-    <div class="cardB">
-        <div class="card">
+    <div class="card">
         <div class="card__photo">
             <router-link to="/cart"><img class="proimage" :src="require('@/assets/products/'+ product.image + '.png')" /></router-link>
             <div class="card__photo__like">
@@ -11,16 +10,18 @@
         </div>
         <p class="card-name"> {{ product.name }}</p>
         <p class="card-price">${{ product.price }}</p>
-        <div class="info">
-            <div class="info__top"> 
-                <input type="radio"/>
+        <div class="card__info">
+            <div class="card__info__top"> 
+                <div>
+                    <button>XS</button>
+                    <button>S</button>
+                </div>
                 <input type="radio"/>
             </div>
-            <div class="info__button" :class="{activeCheckout: statusCheckout}" @click="addCheckout(product)">
+            <div class="card__info__button" :class="{activeCheckout: statusCheckout}" @click="addCheckout(product)">
                 <img src="@/assets/icons/cartadder.png"/>
                 <div></div>
             </div>
-        </div>
         </div>
     </div>
 </template>
@@ -101,8 +102,8 @@ export default {
 // }
 
 .card {
-        position: relative;
-            z-index: 3;
+    position: relative;
+    z-index: 1;
     &__photo {
         position: relative;
         &__like {
@@ -136,42 +137,26 @@ export default {
             z-index: 1;
         }
     }
-    &-name {
-        font-weight: 400;
-        font-size: 18px;
-        color: #424551;
-        margin-top: 16px;
-        margin-bottom: 8px;
-        margin-left: 16px;
-        
-    }
-    &-price {
-        font-weight: 700;
-        font-size: 20px;
-        margin-left: 16px;
-    }
-    .info {
+    &__info {
         display: none;
     }
     &:hover {
         box-shadow: 1px 4px 8px 0px rgba(34, 60, 80, 0.2);
         cursor: pointer;
-        max-height: 100wh;
-        padding-bottom: 16px;
-        .info {
+        z-index: 2;
+        &__info {
+             display: block;
             position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
+            width: 100%;
             z-index: 4;
-            display: block;
-        &__top {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 16px;
-            height: 50px;
-        }
-        &__button {
+            &__top {
+                display: flex;
+                justify-content: space-between;
+                margin: 20px 16px;
+                height: 50px;
+                align-items: center;
+            }
+            &__button {
             justify-content: center;
             background: teal;
             display: flex;
@@ -201,9 +186,22 @@ export default {
                 }
             }
         }
+        }
     }
+    &-name {
+        font-weight: 400;
+        font-size: 18px;
+        color: #424551;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        margin-left: 16px;
+        
     }
-
+    &-price {
+        font-weight: 700;
+        font-size: 20px;
+        margin-left: 16px;
+    }
 }
 
 </style>

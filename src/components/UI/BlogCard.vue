@@ -34,6 +34,7 @@ export default {
               margin: 12px 24px 16px;
               display: flex;
               gap: 12px;
+              align-items: flex-start
               
             }
             &__p3 {

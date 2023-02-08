@@ -93,9 +93,15 @@ export default {
     position: absolute;
     right: 48px;
     cursor: pointer;
+    @media (max-width: $mobile + px) {
+        display: none;
+    }
 }
 .swiper-button-next222 {
         cursor: pointer;
+        @media (max-width: $mobile + px) {
+        display: none;
+    }
 }
 
 
@@ -107,6 +113,10 @@ export default {
     &-p1 {
         font-weight: 900;
         font-size: 46px;
+        @media (max-width: $mobile + px) {
+            font-size: 24px;
+            margin: auto;
+        }
     }
     &-button {
         font-weight: 500;

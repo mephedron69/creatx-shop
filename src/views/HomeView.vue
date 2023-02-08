@@ -116,7 +116,7 @@
                           <p class="inblock__name">For All new Email Subscribers</p>
                           <p class="inblock__desc">Get 5% Off & Free Delivery</p>
                           <p class="inblock-email">Email</p>
-                          <div>
+                          <div class="block4in">
                             <input class=inblock__input type="text" placeholder="Your working email"/>
                             <button class=inblock__button>Subscribe</button>
                           </div>
@@ -224,8 +224,8 @@
               </div>
               <div class="home__block9__part2__right">
                   <img src="@/assets/images/block9p2i1.png"/>
-                   <img src="@/assets/images/block9p2i2.png"/>
-                    <img src="@/assets/images/block9p2i3.png"/>
+                   <img class="home__block9__part2__right-p1" src="@/assets/images/block9p2i2.png"/>
+                    <img class="home__block9__part2__right-p2" src="@/assets/images/block9p2i3.png"/>
               </div>
           </div>
           <div class="home__block9__part3">
@@ -348,9 +348,15 @@ export default {
 .block6 {
   background:#E5E8ED;
   padding: 80px 0;
+  @media (max-width: $mobile + px) {
+    padding: 20px 0;
+  }
 }
 .block7 {
   padding: 80px 0;
+  @media (max-width: $mobile + px) {
+    padding: 20px 0;
+  }
 }
 .home {
   &__block1 {
@@ -454,6 +460,9 @@ export default {
         font-weight: 400;
         font-size: 18px;
         color: #787A80;
+        @media (max-width: $mobile + px) {
+          text-align: center;
+        }
       }
       a {
         color: teal;
@@ -500,11 +509,18 @@ export default {
           flex-direction: column;
           &-left {
             width: 100%;
+            img {
+              height: 200px;
+            }
           }
           &-right {
             width: 100%;
+            img {
+              height: 200px;
+            }
           }
         }
+         
     }
 
     &__bot {
@@ -528,19 +544,25 @@ export default {
           flex-direction: column;
           &-left {
             width: 100%;
+            img {
+              height: 200px;
+            }
           }
           &-right {
             width: 100%;
+            img {
+              height: 200px;
+            }
           }
         }
     }
     .inblock {
       z-index: 2;
-      width: 350px;
+      width: 72%;
         height: 100%;
       position: absolute;
-      left: 60px;
-      top: 60px;
+      left: 5%;
+      top: 15%;
       &__name {
         font-weight: 700;
         font-size: 14px;
@@ -551,6 +573,9 @@ export default {
         font-size: 32px;
         margin-top: 12px;
         margin-bottom: 40px;
+        @media (max-width: $mobile + px) {
+          font-size: 20px;
+        }
       }
       &__click {
         width: fit-content;
@@ -561,11 +586,16 @@ export default {
         font-weight: 700;
         font-size: 14px;
         padding: 10px 22px;
+        @media (max-width: $mobile + px) {
+          font-size: 10px;
+        }
       }
       &-email {
         font-weight: 400;
         font-size: 14px;
-
+         @media (max-width: $mobile + px) {
+          display: none;
+         }
       }
       &__input {
         border: none;
@@ -573,7 +603,13 @@ export default {
         margin-top: 8px;
         margin-bottom: 20px;
         outline: none;
+         @media (max-width: $mobile + px) {
+          margin-top: 0;
+          margin-bottom: 5px;
+          padding: 6px 16px;
+         }
       }
+      
 
       &__button {
         border: none;
@@ -581,12 +617,20 @@ export default {
         padding: 11px 16px;
         color: white;
         cursor: pointer;
+         @media (max-width: $mobile + px) {
+          display: flex;
+          margin: auto;
+          padding: 6px 16px;
+         }
       }
       &__limit {
         margin-top: 79px;
         font-weight: 700;
         font-size: 14px;
         letter-spacing: 1px;
+        @media (max-width: $mobile + px) {
+          display: none;
+        }
       }
       &__time {
         margin-top: 15px;
@@ -597,6 +641,9 @@ export default {
           flex-direction: column;
           gap: 12px;
         }
+         @media (max-width: $mobile + px) {
+          display: none;
+        }
       }
       &__limit1{
         
@@ -605,6 +652,11 @@ export default {
         font-size: 14px;
         letter-spacing: 1px;
       }
+    }
+    .block4in {
+       @media (max-width: $mobile + px) {
+          margin-top: -25px
+         }
     }
   }
   &__block5 {
@@ -617,6 +669,10 @@ export default {
           font-weight: 900;
           font-size: 46px;
           justify-content: center;
+          @media (max-width: $mobile + px) {
+            text-align: center;
+            font-size: 24px;
+          }
       }
       &__category {
         justify-content: center;
@@ -714,8 +770,8 @@ export default {
     &__part1 {
           margin-top: 120px;
           justify-content: space-between;
-        display: flex;
-        gap: 50px;
+          display: flex;
+         gap: 50px;
         &__about {
           text-align: center;
           .block9name {
@@ -734,8 +790,17 @@ export default {
             width: 1px;
             background: black;
             background: linear-gradient(270.01deg, rgba(218, 219, 221, 0) 0%, rgba(218, 219, 221, 0.5) 12.33%, #DADBDD 51.91%, rgba(218, 219, 221, 0.5) 87.85%, rgba(218, 219, 221, 0) 100%);
-            
+             @media (max-width: $mobile + px) {
+              display: none;
+             }
         }
+         @media (max-width: $mobile + px) {
+          gap: 20px;
+          flex-wrap: wrap;
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+         }
     }
     &__part2 {
       margin: 180px 0;
@@ -762,14 +827,43 @@ export default {
               width: fit-content;
               padding: 10px 25px;
               cursor: pointer;
+              @media (max-width: $mobile + px) {
+                background: white;
+                align-items: center;
+                margin: auto;
+              }
           }
           a {
             text-decoration: none;
+            @media (max-width: $mobile + px) {
+            }
+          }
+          @media (max-width: $mobile + px) {
+            position: relative;
+            z-index: 2;
           }
       }
       &__right {
           display: flex;
           gap: 15px;
+          z-index: 1;
+          @media (max-width: $mobile + px) {
+            flex-direction: column;
+            &-p1 {
+              display: none;
+            }
+            &-p2 {
+                display: none;
+            }
+          }
+           @media (max-width: $mobile + px) {
+            margin-top: -250px;
+           }
+      }
+      @media (max-width: $mobile + px) {
+        flex-direction: column;
+        margin: 70px 0;
+        gap: 20px;
       }
     }
     &__part3 {
@@ -781,6 +875,9 @@ export default {
         &__left {
           font-weight: 900;
           font-size: 46px;
+          @media (max-width: $mobile + px) {
+            font-size: 35px;
+          }
         }
         a {
           text-decoration: none;
@@ -794,6 +891,10 @@ export default {
           padding: 10px 22px;
           cursor: pointer;
         }
+        @media (max-width: $mobile + px) {
+          flex-direction: column;
+          align-items: center;
+        }
       }
       &__bot {
         display: flex;
@@ -802,12 +903,20 @@ export default {
             box-shadow: 8px 7px 24px 0px rgba(34, 60, 80, 0.2);
             max-width: 600px;
           }
+          @media (max-width: $mobile + px) {
+            flex-direction: column;
+            gap: 20px;
+          }
       }
     }
     &__part4 {
       display: flex;
       justify-content: space-between;
       margin: 120px 0;
+      @media (max-width: $mobile + px) {
+        flex-wrap: wrap;
+        margin: 60px 0;
+      }
     }
   }
 }
